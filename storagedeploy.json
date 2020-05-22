@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountName": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify the Storage account name."
+      }
+    },
+    "storageSKU": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify the Storage account type."
+      }
+    },
+    "location": {
+      "type": "string",
+      "metadata": {
+        "description": "Specify a location for resources."
+      }
+    },
+    "resourceTags": {
+      "type": "object",
+      "metadata": {
+        "desription": "specify the tags to resource"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-04-01",
+      "name": "[parameters('storageAccountName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('storageSKU')]"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "supportsHttpsTrafficOnly": true
+      },
+      "tags": "[parameters('resourceTags')]"
+    }
+  ],
+  "outputs": {
+    "storageEndPoint": {
+      "type": "object",
+      "value": "[reference(parameters('storageAccountName')).primaryEndPoints]"
+    }
+  }
+}
