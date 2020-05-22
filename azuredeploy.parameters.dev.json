@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
-      "value": "mydev0522"
+      "value": "myproj0522"
     },
     "storageSKU": {
       "value": "Standard_LRS"
@@ -13,9 +13,6 @@
         "Environment": "Dev",
         "Project": "Tutorial"
       }
-    },
-    "linkedTemplateUri": {
-      "value": ""
     }
   }
 }

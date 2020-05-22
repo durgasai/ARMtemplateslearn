@@ -23,7 +23,7 @@
     "resourceTags": {
       "type": "object",
       "metadata": {
-        "desription": "specify the tags to resource"
+        "description": "specify the tags to resource"
       }
     }
   },
@@ -44,9 +44,9 @@
     }
   ],
   "outputs": {
-    "storageEndPoint": {
+    "storageEndpoint": {
       "type": "object",
-      "value": "[reference(parameters('storageAccountName')).primaryEndPoints]"
+      "value": "[reference(parameters('storageAccountName')).primaryEndpoints]"
     }
   }
 }

@@ -63,7 +63,7 @@
   "resources": [
     {
       "name": "linkedTemplate",
-      "type": "Microsoft/deployments",
+      "type": "Microsoft.Resources/deployments",
       "apiVersion": "2018-05-01",
       "properties": {
         "mode": "Incremental",
@@ -89,7 +89,7 @@
     {
       "type": "Microsoft.Web/serverfarms",
       "apiVersion": "2018-02-01",
-      "name": "[parameters('appServicePlanName')]",
+      "name": "[variables('appServicePlanName')]",
       "location": "[parameters('location')]",
       "tags": "[parameters('resourceTags')]",
       "sku": {
@@ -115,14 +115,14 @@
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2018-11-01",
-      "name": "[variables('webAppPortalName')]",
+      "name": "[variables('webAppName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]"
       ],
       "kind": "app",
       "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanName'))]",
         "siteConfig": {
           "linuxFxVersion": "[parameters('linuxFxVersion')]"
         }
@@ -130,9 +130,9 @@
     }
   ],
   "outputs": {
-    "storageEndPoint": {
+    "storageEndpoint": {
       "type": "object",
-      "value": "[reference(variables('uniqueStorageName')).primaryEndPoints]"
+      "value": "[reference('linkedTemplate').outputs.storageEndpoint.value]"
     }
   }
 }
