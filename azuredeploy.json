@@ -74,15 +74,15 @@
           "storageAccountName": {
             "value": "[variables('storageAccountName')]"
           },
-          "storageSKU": {
+          /*"storageSKU": {
             "value": "[parameters('storageSKU')]"
-          },
+          },*/
           "location": {
             "value": "[parameters('location')]"
-          },
-          "resourceTags": {
-            "value": "[parameters('resourceTags')]"
           }
+          /*"resourceTags": {
+            "value": "[parameters('resourceTags')]"
+          }*/
         }
       }
     },
